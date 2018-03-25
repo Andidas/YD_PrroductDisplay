@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+       Copyright 2009-2016 the original author or authors.
+
+       Licensed under the Apache License, Version 2.0 (the "License");
+       you may not use this file except in compliance with the License.
+       You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+       Unless required by applicable law or agreed to in writing, software
+       distributed under the License is distributed on an "AS IS" BASIS,
+       WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+       See the License for the specific language governing permissions and
+       limitations under the License.
+
+-->
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="dao.TypeDao">
+	<!-- 一对多查询 -->
+	<resultMap type="entity.Type" id="TypeResult">
+	<id column="t_id" property="t_id" />
+	<result column="t_name" property="t_name" />
+	<result column="t_area" property="t_area" />
+	<collection column="products" property="products" ofType="entity.Product">
+		<id column="qd_id" property="qd_id" />
+		<result column="qd_t_id" property="qd_t_id" />
+		<result column="qd_name" property="qd_name" />
+		<result column="qd_num" property="qd_num" />
+		<result column="qd_color" property="qd_color" />
+		<result column="qd_price" property="qd_price" />
+		<result column="qd_inventory" property="qd_inventory" />
+		<result column="qd_sales" property="qd_sales" />
+		<result column="qd_img" property="qd_img" />
+	</collection>
+</resultMap>
+	
+	<select id="findAll" resultMap="TypeResult">
+		select * from qd_type inner join qd_product on qd_type.t_id=qd_product.qd_t_id
+	</select>
+	
+	
+	
+	
+</mapper>

@@ -1,0 +1,10 @@
+service\ProductService.class
+service\impl\ProductServiceImpl.class
+dao\TypeDao.class
+dao\ProductDao.class
+utils\HtmlResourceView.class
+service\TypeService.class
+entity\Type.class
+service\impl\TypeServiceImpl.class
+entity\Product.class
+controller\ProductController.class
